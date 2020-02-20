@@ -6,7 +6,7 @@ d3.select('body').append('p')
     .text('Dynamic Paragraph')
     .style('font-family', "monospace")
 
-var data = [10, 15, 20, 30]
+var data = [-2,0,1,10, 15, 20, 30]
 
 d3.select('body').append('div')
     .attr('class', 'chart')
@@ -16,5 +16,6 @@ d3.select(".chart")
     .data(data)
         .enter()
         .append("div")
-        .style("width", function(d) {return d + "px"})
+        .style("width", function(d) {return (d>=0) ? (d * 2 + 10) : (5) + "px"})
+        .style("background-color", function(d) { return d>0? ("steel-blue"):(d<0?"orange":"gray")})
         .text(function(d) { return d; })
